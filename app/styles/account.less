@@ -1,0 +1,118 @@
+body {
+	background: @account-bg-color;
+}
+
+.login {
+	font-size: @account-font-size;
+}
+.img-responsive {
+	max-width: 100%;
+}
+
+.account.main {
+	background: url('/assets/images/postmark.png') right 35px no-repeat #fff;
+	width: 90%;
+	margin: 10% auto;
+}
+
+.col-first-half, .col-second-half {
+	width: 100%;
+	padding: 5%;
+}
+
+.col-first-half {
+	padding-top: 125px;
+}
+
+h3 {
+	margin: 0.5em 0 1em;
+	font-size: @account-h3-size;
+	line-height: 1.1;
+	color: @account-text-color;
+}
+
+input[type=text], input[type=password] {
+	width: 100%;
+	display: block;
+	color: @account-text-color;
+	padding: 3px 2px;
+	border: none;
+	border-bottom: 1px solid @account-border-color;
+}
+
+input[type=text] {
+	margin-bottom: 5px;
+}
+
+input[type=password] {
+	margin-bottom: 24px;
+}
+
+input::-webkit-input-placeholder {
+   color: @account-text-color;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+   color: @account-text-color;  
+   opacity: 1;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+   color: @account-text-color;  
+   opacity: 1;
+}
+
+input:-ms-input-placeholder {  
+   color: @account-text-color;  
+}
+
+.blue-btn, .misc-links > a {
+	color: @blue-btn-color;
+}
+
+.blue-btn {
+	background: transparent;
+	font-weight: bold;
+	padding: 4px 10px;
+	border: 1px solid @blue-btn-color;
+}
+
+.misc-links {
+	margin-top: 36px;
+}
+
+.misc-links > a {
+	text-decoration: none;
+}
+
+@media (min-width: 940px) {
+	.account.main {
+		width: 900px;
+		margin: 130px auto;
+	}
+
+	.col-first-half, .col-second-half {
+		width: 50%;
+		margin: 35px 0;
+		float: left;
+	}
+
+	.col-first-half {
+		padding: 125px 0 0 110px;
+	}
+
+	.col-second-half {
+		padding: 125px 60px 45px 65px;
+		border-left: 1px solid @account-border-color;
+	}
+
+	.blue-btn {
+		float: left;
+	}
+
+	.misc-links {
+		float: right;
+		text-align: right;
+		margin-top: 6px;
+	}
+}
