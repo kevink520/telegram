@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 	this.route('login');
 	this.route('reset');
-	this.route('resetSuccess');
+	this.route('reset_success');
 	this.route('dashboard');
 	this.resource('profile', { path: '/:user_id'}, function() {
 		this.route('following');
