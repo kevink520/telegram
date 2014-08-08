@@ -1,14 +1,16 @@
-<div class="account login main clearfix">
-	<div class="col-first-half">
-		<h1>{{#link-to "index"}}<img class="img-responsive" src="/assets/images/telegram-logo.png" alt="Know what's happening - Telegram">{{/link-to}}</h1>
-	</div>
-	<div class="col-second-half">
-		<h3>Reset password</h3>
-		<form>
-			{{input id="email" type="email" value=email placeholder="Enter your email"}}
-			<div class="account-links clearfix">
-				<button {{action "reset"}} class="blue-btn">Reset password</button>
-			</div>
-		</form>
+<div class="account reset bg">
+	<div class="main">
+		<div class="col-first-half">
+			<h1>{{#link-to "index"}}<img class="img-responsive" src="/assets/images/telegram-logo.png" alt="Know what's happening - Telegram">{{/link-to}}</h1>
+		</div>
+		<div class="col-second-half">
+			<h3>Reset password</h3>
+			<form>
+				{{input id="email" type="email" value=email placeholder="Enter your email"}}
+				<div class="account-links">
+					<button {{action "reset"}} class="blue-btn">Reset password</button>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>

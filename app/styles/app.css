@@ -362,18 +362,36 @@ th {
   box-sizing: border-box;
 }
 .clearfix:before,
-.clearfix:after {
+.clearfix:after,
+body:before,
+body:after,
+.account.bg:before,
+.account.bg:after,
+.account .main:before,
+.account .main:after,
+.account-links:before,
+.account-links:after,
+header .content:before,
+header .content:after,
+.post-ui:before,
+.post-ui:after {
   display: table;
   content: " ";
 }
-.clearfix:after {
+.clearfix:after,
+body:after,
+.account.bg:after,
+.account .main:after,
+.account-links:after,
+header .content:after,
+.post-ui:after {
   clear: both;
 }
 body {
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
 }
-body {
+.account.bg {
   background: #008cb8;
 }
 .account {
@@ -382,7 +400,7 @@ body {
 .img-responsive {
   max-width: 100%;
 }
-.account.main {
+.account .main {
   background: url('/assets/images/postmark.png') right 35px no-repeat #ffffff;
   width: 90%;
   margin: 10% auto;
@@ -407,8 +425,10 @@ input {
   color: #000000;
   padding: 3px 2px;
   border: none;
-  border-bottom: 1px solid #eeeeee;
   margin-bottom: 5px;
+}
+.account input {
+  border-bottom: 1px solid #eeeeee;
 }
 input:last-of-type {
   margin-bottom: 24px;
@@ -447,7 +467,7 @@ input:-ms-input-placeholder {
   text-decoration: none;
 }
 @media (min-width: 940px) {
-  .account.main {
+  .account .main {
     width: 900px;
     height: 410px;
     margin: 130px auto;
@@ -473,4 +493,136 @@ input:-ms-input-placeholder {
     text-align: right;
     margin-top: 6px;
   }
+}
+header {
+  height: 100px;
+  box-shadow: 0 1px 2px #eeeeee;
+}
+header .content {
+  margin: 0 5%;
+  max-width: 1100px;
+  font-size: 13px;
+  position: relative;
+}
+@media (min-width: 1200px) {
+  header .content {
+    margin: 0 auto;
+  }
+}
+header .content .home {
+  float: left;
+  margin-top: 12px;
+}
+header .content a {
+  color: #505050;
+  text-decoration: none;
+}
+header .content a:hover {
+  color: #0084b2;
+  text-decoration: underline;
+}
+header .content .home img {
+  margin: 0 5px -5px 0;
+}
+header .content h1 {
+  width: 50px;
+  position: absolute;
+  left: 50%;
+}
+header .content h1 img {
+  width: 100px;
+  display: block;
+  position: absolute;
+  left: -47px;
+  margin-top: 45px;
+}
+@media (min-width: 400px) {
+  header {
+    height: 50px;
+  }
+  header .content h1 img {
+    margin-top: -5px;
+  }
+}
+header .content .user {
+  float: right;
+  margin-top: 10px;
+}
+header .content .user img {
+  margin: 0 8px -10px 0;
+}
+.dashboard.main {
+  max-width: 560px;
+  margin: 30px auto;
+  font-size: 13px;
+}
+.post-ui {
+  padding: 0 20px;
+}
+.dashboard input {
+  font-size: 22px;
+}
+.character-count {
+  float: left;
+  color: #505050;
+}
+.gray-btn {
+  float: right;
+  background: transparent;
+  font-weight: bold;
+  padding: 4px 10px;
+  border: 1px solid #505050;
+  color: #505050;
+  margin-bottom: -10px;
+}
+.dashboard hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  /*border-bottom: 1px solid rgba(255, 255, 255, 0.3);*/
+}
+.dashboard h3 {
+  color: #505050;
+  font-weight: normal;
+  margin: 20px auto;
+  text-align: center;
+}
+article {
+  display: table;
+  padding: 10px 20px;
+}
+article > * {
+  display: table-cell;
+}
+article img {
+  width: 50px;
+  margin-right: 20px;
+}
+article .text {
+  vertical-align: top;
+}
+article h4 {
+  margin: 0 0 6px;
+}
+article h4 a {
+  color: #505050;
+}
+article p {
+  color: #505050;
+  margin-top: 6px;
+}
+article a {
+  color: #0084b2;
+  text-decoration: none;
+}
+article h4 a:hover,
+article a:hover {
+  color: #0084b2;
+  text-decoration: underline;
+}
+article .misc {
+  margin-bottom: 0;
+}
+article .time {
+  color: #888888;
 }
