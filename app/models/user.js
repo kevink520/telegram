@@ -9,35 +9,37 @@ var User = DS.Model.extend({
 	photo: attr('string')
 });
 
-User.FIXTURES = [
-	{ 
-		id: 'cristianslat',
-		name: 'Cristian Strat', 
-		password: '4270gRt%8', 
-		email: 'cristianslat@gmail.com', 
-		photo: '/assets/images/cristianslat.jpg'
-	},
-	{ 
-		id: 'johnmaeda',
-		name: 'John Maeda',
-		password: 'fgcffgu97g^',
-		email: 'johnmaeda@gmail.com',
-		photo: '/assets/images/johnmaeda.jpg'
-	},
-	{
-		id: 'clarkewolfe',
-		name: 'Clarke Wolfe',
-		password: '#ft56j93*',
-		email: 'clarkewolfe@yahoo.com',
-		photo: '/assets/images/clarkewolfe.png'
-	},
-	{
-		id: 'fastcompany',
-		name: 'Fast Company',
-		password: 'y7^O978p',
-		email: 'info@fastcompany.com',
-		photo: '/assets/images/fastcompany.png'
-	}
-];
+User.reopenClass({
+	FIXTURES: [
+		{ 
+			id: 'cristianstrat',
+			name: 'Cristian Strat', 
+			password: '4270gRt%8', 
+			email: 'cristianstrat@gmail.com', 
+			photo: '/assets/images/cristianstrat.jpg'
+		},
+		{ 
+			id: 'johnmaeda',
+			name: 'John Maeda',
+			password: 'fgcffgu97g^',
+			email: 'johnmaeda@gmail.com',
+			photo: '/assets/images/johnmaeda.jpg'
+		},
+		{
+			id: 'clarkewolfe',
+			name: 'Clarke Wolfe',
+			password: '#ft56j93*',
+			email: 'clarkewolfe@yahoo.com',
+			photo: '/assets/images/clarkewolfe.png'
+		},
+		{
+			id: 'fastcompany',
+			name: 'Fast Company',
+			password: 'y7^O978p',
+			email: 'info@fastcompany.com',
+			photo: '/assets/images/fastcompany.png'
+		}
+	]
+});
 
 export default User;

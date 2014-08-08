@@ -1,16 +1,17 @@
 <div class="account create main clearfix">
 	<div class="col-first-half">
-		<h1><a href="/"><img class="img-responsive" src="/assets/images/telegram-logo.png" alt="Know what's happening - Telegram"></a></h1>
+		<h1>{{#link-to "index"}}<img class="img-responsive" src="/assets/images/telegram-logo.png" alt="Know what's happening - Telegram">{{/link-to}}</h1>
 	</div>
 	<div class="col-second-half">
 		<h3>Create your account</h3>
-		<form action="#" method="post">
-			<input id="name" type="text" name="name" placeholder="Enter your name ...">
-			<input id="username" type="text" name="username" placeholder="Enter your username ...">
-			<input id="password" type="password" name="password" placeholder="Enter your password ...">
+		<form>
+			{{input id="name" type="text" value=name placeholder="Enter your name ..."}}
+			{{input id="username" type="text" value=username placeholder="Enter your username ..."}}
+			{{input id="password" type="password" value=password placeholder="Enter your password ..."}}
 			<div class="account-links clearfix">
-				<button class="blue-btn" type="submit">Sign up</button>
-			    <div class="misc-links"><a href="/login">Login</a></p></div>
+				<button {{action "signUp"}} class="blue-btn">Sign up</button>
+			  <div class="misc-links">{{#link-to "login"}}Login{{/link-to}}</div>
+			</div>
 		</form>
 	</div>
 </div>
