@@ -1,7 +1,10 @@
 import Ember from "ember";
 
 var IndexController = Ember.ObjectController.extend({
-	content: this,
+	name: '',
+	username: '',
+	password: '',
+	needs: ['application'],
 	actions: {
 		signUp: function() {
 			var name = this.get('name');
@@ -20,10 +23,12 @@ var IndexController = Ember.ObjectController.extend({
 				email: '',
 				photo: ''
 			});
+			this.set('controllers.application.sessionId', username);
+			this.set('controllers.application.sessionName', name);			
+			user.save();
 			this.set('name', '');
 			this.set('username', '');
 			this.set('password', '');
-			user.save();
 			this.transitionToRoute('dashboard');
 		}
 	}

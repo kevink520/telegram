@@ -1,3 +1,10 @@
+html, body, body > .ember-view {
+	height: 100%;
+} 
+.account.bg {
+	min-height: 100%;
+}
+
 .account.bg {
   &:extend(.clearfix all);
 	background: @account-bg-color;
@@ -96,7 +103,7 @@ input:-ms-input-placeholder {
 	.account .main {
 		width: 900px;
 		height: 410px;
-		margin: 130px auto;
+		margin: 130px auto 130px;
 	}
 
 	.col-first-half, .col-second-half {

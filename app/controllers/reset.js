@@ -1,7 +1,7 @@
 import Ember from "ember";
 
 var ResetController = Ember.ObjectController.extend({
-	content: this,
+	email: '',
 	actions: {
 		reset: function() {
 			var email = this.get('email');
@@ -14,7 +14,8 @@ var ResetController = Ember.ObjectController.extend({
 			var controller = this;
 			this.store.find('user', { email: email }).then(function(user) {
 				var password = user.content[0]._data.password;
-				console.log(password);
+				// Email password
+				controller.set('email', '');
 				controller.transitionToRoute('reset_success');
 			});
 		}

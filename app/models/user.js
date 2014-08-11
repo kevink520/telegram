@@ -14,30 +14,30 @@ User.reopenClass({
 		{ 
 			id: 'cristianstrat',
 			name: 'Cristian Strat', 
-			password: '4270gRt%8', 
+			password: 'cs1234', 
 			email: 'cristianstrat@gmail.com', 
-			photo: '/assets/images/cristianstrat.jpg'
+			photo: 'http://placehold.it/50'
 		},
 		{ 
 			id: 'johnmaeda',
 			name: 'John Maeda',
-			password: 'fgcffgu97g^',
+			password: 'jm1234',
 			email: 'johnmaeda@gmail.com',
-			photo: '/assets/images/johnmaeda.jpg'
+			photo: 'http://placehold.it/50'
 		},
 		{
 			id: 'clarkewolfe',
 			name: 'Clarke Wolfe',
-			password: '#ft56j93*',
+			password: 'cw1234',
 			email: 'clarkewolfe@yahoo.com',
-			photo: '/assets/images/clarkewolfe.png'
+			photo: 'http://placehold.it/50'
 		},
 		{
 			id: 'fastcompany',
 			name: 'Fast Company',
-			password: 'y7^O978p',
+			password: 'fc1234',
 			email: 'info@fastcompany.com',
-			photo: '/assets/images/fastcompany.png'
+			photo: 'http://placehold.it/50'
 		}
 	]
 });
