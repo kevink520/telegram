@@ -1,0 +1,9 @@
+<h3>Get going ...</h3>
+<form>
+  {{input id="username" type="text" value=username placeholder="Enter your username ..."}}
+  {{input id="password" type="password" value=password placeholder="Enter your password ..."}}
+  <div class="account-links">
+    <button {{action "logIn"}} class="blue-btn">Log in</button>
+    <div class="misc-links">{{#link-to "account.reset"}}Recover password{{/link-to}} or {{#link-to "account.index"}}Sign up{{/link-to}}</div>
+  </div>
+</form>

@@ -1,29 +1,29 @@
 <header>
-	<div class="content">
-		{{#link-to "dashboard" class="home"}}<img src="/assets/images/home-icon.png" alt="Home Icon">Home{{/link-to}}
-		<h1>{{#link-to "dashboard"}}<img src="/assets/images/telegram-logo-2.png" alt="Telegram">{{/link-to}}</h1>
-		<a href="#" class="user"><img src="http://placehold.it/30" alt="">{{sessionName}}</a>
-	</div>
+  <div class="content">
+    {{#link-to "dashboard" class="home"}}<img src="/assets/images/home-icon.png" alt="Home Icon">Home{{/link-to}}
+    <h1>{{#link-to "dashboard"}}<img src="/assets/images/telegram-logo-2.png" alt="Telegram">{{/link-to}}</h1>
+    <a href="#" class="user"><img src="http://placehold.it/30" alt="">{{sessionName}}</a>
+  </div>
 </header>
 <div class="dashboard main">
-	<form class="post-ui">
-		{{input type="text" id="post" value=newPostBody placeholder="Write a new post"}}
-		<p {{bind-attr class=":character-count warning"}}>{{characterCount}} character{{inflection}}<br>
-		  {{errorMessage}}</p>
-		<button {{action "publish"}} class="gray-btn">Publish</button>
-	</form>
-	<hr>
-	<h3>Latest posts</h3>
-	<hr>
-	{{#each}}
-	<article>
-		<img {{bind-attr src=author.photo alt=author.name}}>
-		<div class="text">
-			<h4 class="author"><a href="#">{{author.name}}</a></h4>
-			{{format-markdown body=body}}
-			<p class="misc">{{format-date date=createdDate}} &#183; <a href="#" class="delete">Delete</a></p>
-		</div>
-	</article>
-	<hr>
-	{{/each}}
+  <form class="post-ui">
+    {{input type="text" id="post" value=newPostBody placeholder="Write a new post"}}
+    <p {{bind-attr class=":character-count warning"}}>{{characterCount}} character{{inflection}}<br>
+    {{errorMessage}}</p>
+    <button {{action "publish"}} class="gray-btn">Publish</button>
+  </form>
+  <hr>
+  <h3>Latest posts</h3>
+  <hr>
+  {{#each}}
+  <article>
+    <img {{bind-attr src=author.photo alt=author.name}}>
+    <div class="text">
+	    <h4 class="author"><a href="#">{{author.name}}</a></h4>
+	    {{format-markdown body=body}}
+	    <p class="misc">{{format-date date=createdDate}} &#183; <a href="#" class="delete">Delete</a></p>
+    </div>
+  </article>
+  <hr>
+  {{/each}}
 </div>
