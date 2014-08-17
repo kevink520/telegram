@@ -21,7 +21,7 @@ var IndexController = Ember.ObjectController.extend({
         name: name,
         password: password,
         email: '',
-        photo: 'http://placehold.it/50'
+        photo: 'http://placehold.it/70'
       });
       this.get('session').set('user', user);
       user.save();

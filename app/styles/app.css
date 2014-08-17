@@ -561,6 +561,8 @@ header .content .user {
 }
 header .content .user img {
   margin: 0 8px -10px 0;
+  width: 30px;
+  height: 30px;
 }
 .dashboard.main {
   max-width: 560px;
@@ -611,6 +613,7 @@ article > * {
 }
 article img {
   width: 50px;
+  height: 50px;
   margin-right: 20px;
 }
 article .text {
@@ -640,4 +643,45 @@ article .misc {
 }
 article .formatted-date {
   color: #888888;
+}
+.user-info {
+  margin: 0 auto;
+  text-align: center;
+}
+.user-info h2 {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.user-info h4 {
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  color: #505050;
+  font-weight: normal;
+}
+.user-info .blue-btn {
+  float: none;
+  margin-bottom: 1.5em;
+}
+nav {
+  margin: 0 auto;
+  width: 307px;
+}
+nav a {
+  display: inline-block;
+  font-size: 22px;
+  color: #0084b2;
+  padding: 0.25em;
+  margin-right: 0.5em;
+  text-decoration: none;
+}
+nav a.active {
+  color: #505050;
+  border-bottom: 3px solid #0084b2;
+}
+nav a:last-child {
+  margin-right: 0;
+}
+nav + hr {
+  margin-top: 0;
 }

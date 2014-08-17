@@ -1,0 +1,17 @@
+{{telegram-header user=session.user}}
+<div class="dashboard main">
+  <div class="user-info">
+    <img {{bind-attr src=this.photo alt=this.name}}>
+    <h2 class="name">{{this.name}}</h2>
+    <h4 class="username">@{{this.id}}</h4>
+    <button class="blue-btn">Follow</button>
+  </div>
+  <hr>
+  <nav>
+    {{#link-to "profile.index"}}Posts{{/link-to}}
+    {{#link-to "profile.following"}}Following{{/link-to}}
+    {{#link-to "profile.followers"}}Followers{{/link-to}}
+  </nav>
+  <hr>
+  {{outlet}}
+</div>

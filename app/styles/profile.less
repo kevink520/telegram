@@ -1,0 +1,49 @@
+.user-info {
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+  	font-size: 16px;
+  	margin-top: 10px;
+  	margin-bottom: 0;
+  }
+
+  h4 {
+  	margin-top: 0;
+  	margin-bottom: 1.5em;
+  	color: @medium-gray;
+  	font-weight: normal;
+  }
+
+  .blue-btn {
+    float: none;
+    margin-bottom: 1.5em;
+  }
+}
+
+nav {
+  margin: 0 auto;
+  width: 307px;
+
+  a {
+    display: inline-block;
+    font-size: @h3-size;
+    color: @blue-btn-color;
+    padding: 0.25em;
+    margin-right: 0.5em;
+    text-decoration: none;
+    
+    &.active {
+      color: @medium-gray;
+      border-bottom: 3px solid @blue-btn-color;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  & + hr {
+  	margin-top: 0;
+  }
+}

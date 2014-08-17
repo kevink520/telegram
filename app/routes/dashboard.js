@@ -2,7 +2,7 @@ import Ember from "ember";
 
 var DashboardRoute = Ember.Route.extend({
   beforeModel: function() {
-    if (!this.get('session.user.id') || !this.get('session.user.name')) {
+    if (!this.get('session.isAuthenticated')) {
       this.transitionTo('account.index');
     }
   },

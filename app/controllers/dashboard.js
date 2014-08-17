@@ -1,12 +1,6 @@
 import Ember from "ember";
 
 var DashboardController = Ember.ArrayController.extend({
-  sessionId: function() {
-    return this.get('session.user.id');
-  }.property('session.user.id'),
-  sessionName: function() {
-    return this.get('session.user.name');
-  }.property('session.user.name'),
   newPostBody: '',
   characterCount: function() {
     return 140 - this.get('newPostBody.length');
@@ -24,8 +18,7 @@ var DashboardController = Ember.ArrayController.extend({
   }.property('characterCount'),
   actions: {
     publish: function() {
-      var controller = this;
-      var sessionId = this.get('sessionId');
+      var user = this.get('session.user');
       var newPostBody = this.get('newPostBody'); 
       if (!newPostBody) {
         return false;
@@ -38,18 +31,23 @@ var DashboardController = Ember.ArrayController.extend({
         return;
       }
       var post = this.store.createRecord('post', {
+        author: user,
         body: newPostBody,
         createdDate: new Date().toISOString()
       });
-      this.store.find('user', sessionId).then(function(user) {
-        post.set('author', user);
-        post.save();
-        controller.set('newPostBody', '');
-      });
+      post.save();
+      this.set('newPostBody', '');
+    },
+    delete: function(post) {
+      post.deleteRecord();
+      post.save();
     }
   },
   sortProperties: ['createdDate'],
-  sortAscending: false
+  sortAscending: false,
+  limitedContent: function() {
+    return this.get('arrangedContent.length') > 7 ? this.get('arrangedContent').slice(0, 7) : this.get('arrangedContent');
+  }.property('arrangedContent.length')
 });
 
 export default DashboardController;

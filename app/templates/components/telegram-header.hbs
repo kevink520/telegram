@@ -1,0 +1,9 @@
+<div class="content">
+{{#if user}}
+  {{#link-to "dashboard" class="home"}}<img src="/assets/images/home-icon.png" alt="Home Icon">Home{{/link-to}}
+{{/if}}
+  <h1>{{#link-to "dashboard"}}<img src="/assets/images/telegram-logo-2.png" alt="Telegram">{{/link-to}}</h1>
+{{#if user}}
+  {{#link-to "profile" user class="user"}}<img {{bind-attr src=user.photo alt=user.name}}>{{user.name}}{{/link-to}}
+{{/if}}
+</div>
