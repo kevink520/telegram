@@ -37,10 +37,6 @@ var DashboardController = Ember.ArrayController.extend({
       });
       post.save();
       this.set('newPostBody', '');
-    },
-    delete: function(post) {
-      post.deleteRecord();
-      post.save();
     }
   },
   sortProperties: ['createdDate'],

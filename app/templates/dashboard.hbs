@@ -10,14 +10,6 @@
   <h3>Latest posts</h3>
   <hr>
   {{#each post in limitedContent}}
-  <article>
-    {{#link-to "profile" post.author}}<img {{bind-attr src=post.author.photo alt=post.author.name}}>{{/link-to}}
-    <div class="text">
-	    <h4 class="author">{{#link-to "profile" post.author}}{{post.author.name}}{{/link-to}}</h4>
-	    {{format-markdown body=post.body}}
-	    <p class="misc">{{format-date date=post.createdDate}} &#183; {{delete-post post=post action="delete"}}</p>
-    </div>
-  </article>
-  <hr>
+    {{telegram-post post=post}}
   {{/each}}
 </div>

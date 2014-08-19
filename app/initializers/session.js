@@ -15,5 +15,6 @@ export default {
 
     app.inject('route', 'session', 'session:main');
     app.inject('controller', 'session', 'session:main');
+    app.inject('component', 'session', 'session:main');
   }
 };

@@ -19,7 +19,7 @@ Post.reopenClass({
     {
       id: '2',
       author: 'fastcompany',
-      body: 'This app is like a remote control for your credit cards: <a href="http://f-st.co/OXzg2eEw">http://f-st.co/OXzg2eEw</a> <a href="pic.twitter.com/eAL1sdVhrh">pic.twitter.com/eAL1sdVhrh</a>',
+      body: 'This app is like a remote control for your credit cards: <a href="http://f-st.co/OXzg2Ew">http://f-st.co/OXzg2Ew</a> <a href="http://pic.twitter.com/eAL1sdVhrh">pic.twitter.com/eAL1sdVhrh</a>',
       createdDate: new Date(2014, 3, 24, 13, 40, 0).toISOString()
     },
     {
