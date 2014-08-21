@@ -6,6 +6,7 @@ var DashboardRoute = Ember.Route.extend({
       this.transitionTo('account.index');
     }
   },
+  
   model: function() {
     return this.store.find('post');
   }

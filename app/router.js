@@ -10,7 +10,9 @@ Router.map(function() {
     this.route('reset');
     this.route('reset_success');
   });
+
   this.route('dashboard');
+  
   this.resource('profile', { path: '/:user_id' }, function() {
     this.route('following');
     this.route('followers');

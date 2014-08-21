@@ -666,7 +666,7 @@ article .formatted-date {
 }
 nav {
   margin: 0 auto;
-  width: 310px;
+  text-align: center;
 }
 nav a {
   display: inline-block;

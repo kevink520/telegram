@@ -3,6 +3,7 @@ import Ember from "ember";
 var FormatMarkdownComponent = Ember.Component.extend({
   tagName: 'p',
   classNames: ['body'],
+  
   formattedMarkdown: function() {
     //var showdown = new Showdown.converter();
     return new Ember.Handlebars.SafeString(this.get('body'));
