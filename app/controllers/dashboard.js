@@ -20,8 +20,13 @@ var DashboardController = Ember.ArrayController.extend({
       return value;
     }
   }.property('characterCount'),
+
+  index: function() {
+    return (+(this.get('content').sortBy('id').get('lastObject').get('id')) + 1).toString();
+  }.property('content.@each'),
   
   actions: {
+
     publish: function() {
       var user = this.get('session.user');
       var newPostBody = this.get('newPostBody'); 
@@ -38,8 +43,10 @@ var DashboardController = Ember.ArrayController.extend({
         this.set('errorMessage', 'Oops! Your post was over the 140 characters limit. Try making your post shorter and publishing it again.');
         return;
       }
-      
+      var controller = this;
+      console.log(controller.get('index'));
       var post = this.store.createRecord('post', {
+        id: controller.get('index'),
         author: user,
         body: newPostBody,
         createdDate: new Date().toISOString()
@@ -48,6 +55,7 @@ var DashboardController = Ember.ArrayController.extend({
       post.save();
       this.set('newPostBody', '');
     }
+
   },
   
   sortProperties: ['createdDate'],
@@ -55,7 +63,7 @@ var DashboardController = Ember.ArrayController.extend({
   
   limitedContent: function() {
     return this.get('arrangedContent.length') > 7 ? this.get('arrangedContent').slice(0, 7) : this.get('arrangedContent');
-  }.property('arrangedContent.length')
+  }.property('arrangedContent.@each')
 });
 
 export default DashboardController;

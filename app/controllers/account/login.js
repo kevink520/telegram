@@ -28,17 +28,16 @@ var LoginController = Ember.ObjectController.extend({
       };
 
       retry(function() {
-        return controller.store.find('user', { id: username, password: password }).then(function(result) {
-          var user = result.get('firstObject');
-
-          if (user) {
-            controller.get('session').set('user', user);
+        return controller.store.find('user', { id: username, password: password }).then(function(users) {
+          if (users) {
+            controller.get('session').set('user', users.get('firstObject'));
             controller.set('username', '');
             controller.set('password', '');
+            console.log(users.get('firstObject'));
           
             controller.transitionToRoute('dashboard');
           }  
-                
+
         });
       }, 5);
           

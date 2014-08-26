@@ -20,33 +20,29 @@ var IndexController = Ember.ObjectController.extend({
       }
       
       var user = this.store.createRecord('user', {
-        id: username,
-        name: name,
-        password: password,
-        email: '',
-        photo: 'http://placehold.it/70'
+        //'user': {
+          'id': username,
+          'name': name,
+          'password': password,
+          'email': '',
+          'photo': 'http://placehold.it/70'
+        //}
       });
-
-      var retry = function(callback, nTimes) {
-        return callback().catch(function(reason) {
-          if (nTimes-- > 0) {
-            return retry(callback, nTimes);
-          }
-          throw reason;
-        });
-      };
       
       this.get('session').set('user', user);
+      var controller = this;
 
-      retry(function() {
-        return user.save();  
-      }, 5);
+      user.save().then(function() {
+        console.log('Saved user record.');
+      }, function() {
+        console.log('Failed to save user record');
+      });     
 
-      this.set('name', '');
-      this.set('username', '');
-      this.set('password', '');
-
-      this.transitionToRoute('dashboard');      
+      controller.set('name', '');
+      controller.set('username', '');
+      controller.set('password', '');
+      console.log(user);
+      controller.transitionToRoute('dashboard');         
     }
   }
 });
