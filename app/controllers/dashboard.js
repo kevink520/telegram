@@ -21,9 +21,9 @@ var DashboardController = Ember.ArrayController.extend({
     }
   }.property('characterCount'),
 
-  index: function() {
+  /*index: function() {
     return (+(this.get('content').sortBy('id').get('lastObject').get('id')) + 1).toString();
-  }.property('content.@each'),
+  }.property('content.@each'),*/
   
   actions: {
 
@@ -46,7 +46,7 @@ var DashboardController = Ember.ArrayController.extend({
       var controller = this;
       console.log(controller.get('index'));
       var post = this.store.createRecord('post', {
-        id: controller.get('index'),
+        //id: controller.get('index'),
         author: user,
         body: newPostBody,
         createdDate: new Date().toISOString()

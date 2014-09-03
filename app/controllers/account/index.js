@@ -4,7 +4,6 @@ var IndexController = Ember.ObjectController.extend({
   name: '',
   username: '',
   password: '',
-  needs: ['application'],
   actions: {
     signUp: function() {
       var name = this.get('name');

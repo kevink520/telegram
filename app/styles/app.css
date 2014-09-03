@@ -555,14 +555,65 @@ header .content h1 img {
     margin-top: -5px;
   }
 }
-header .content .user {
+header .content .user-menu {
+  display: inline-block;
+  height: 42px;
   float: right;
   margin-top: 10px;
+  position: relative;
 }
 header .content .user img {
   margin: 0 8px -10px 0;
   width: 30px;
   height: 30px;
+}
+header .content .user .caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  margin-left: 4px;
+  border-top: 4px solid #505050;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.user-menu .dropdown {
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #505050;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transiton: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -transition: all 0.3s ease;
+}
+.user-menu:hover .dropdown {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.user-menu .dropdown li {
+  padding: 0;
+  margin: 0;
+}
+.user-menu .dropdown li a {
+  display: block;
+  padding: 1em;
 }
 .dashboard.main {
   max-width: 560px;
