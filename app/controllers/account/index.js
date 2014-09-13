@@ -17,19 +17,16 @@ var IndexController = Ember.ObjectController.extend({
       if (!name.trim() || !username.trim() || !password.trim()) {
         return;
       }
-      
+
       var user = this.store.createRecord('user', {
-        //'user': {
-          'id': username,
-          'name': name,
-          'password': password,
-          'email': '',
-          'photo': 'http://placehold.it/70'
-        //}
+        'username': username,
+        'name': name,
+        'password': password,
+        'email': '',
+        'photo': 'http://placehold.it/70'
       });
       
       this.get('session').set('user', user);
-      var controller = this;
 
       user.save().then(function() {
         console.log('Saved user record.');
@@ -37,11 +34,11 @@ var IndexController = Ember.ObjectController.extend({
         console.log('Failed to save user record');
       });     
 
-      controller.set('name', '');
-      controller.set('username', '');
-      controller.set('password', '');
+      this.set('name', '');
+      this.set('username', '');
+      this.set('password', '');
       console.log(user);
-      controller.transitionToRoute('dashboard');         
+      this.transitionToRoute('dashboard');         
     }
   }
 });

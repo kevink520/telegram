@@ -4,8 +4,8 @@ var TelegramPostComponent = Ember.Component.extend({
   tagName: 'article',
   
   myPost: function() {
-    return this.get('post.author.id') === this.get('session.user.id');
-  }.property('post.author.id', 'session.user.id'),
+    return this.get('post.author.username') === this.get('session.user.username');
+  }.property('post.author.username', 'session.user.username'),
   
   actions: {
     delete: function(post) { 

@@ -28,7 +28,7 @@ var LoginController = Ember.ObjectController.extend({
       };
 
       retry(function() {
-        return controller.store.find('user', { id: username, password: password }).then(function(users) {
+        return controller.store.find('user', { username: username, password: password }).then(function(users) {
           if (users) {
             controller.get('session').set('user', users.get('firstObject'));
             controller.set('username', '');

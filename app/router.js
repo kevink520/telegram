@@ -13,7 +13,7 @@ Router.map(function() {
 
   this.route('dashboard');
   
-  this.resource('profile', { path: '/:user_id' }, function() {
+  this.resource('profile', { path: '/:username' }, function() {
     this.route('following');
     this.route('followers');
   });

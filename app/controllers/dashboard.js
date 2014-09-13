@@ -43,14 +43,14 @@ var DashboardController = Ember.ArrayController.extend({
         this.set('errorMessage', 'Oops! Your post was over the 140 characters limit. Try making your post shorter and publishing it again.');
         return;
       }
-      var controller = this;
-      console.log(controller.get('index'));
+
       var post = this.store.createRecord('post', {
-        //id: controller.get('index'),
         author: user,
         body: newPostBody,
         createdDate: new Date().toISOString()
       });
+
+      console.log(post);
       
       post.save();
       this.set('newPostBody', '');
