@@ -19,6 +19,7 @@ var app = new EmberApp();
 
 app.import('vendor/moment/moment.js');
 app.import('vendor/showdown/src/showdown.js');
+app.import('vendor/jquery-md5/jquery.md5.js');
 app.import({
 	development: 'vendor/ember-data/ember-data.js',
 	production: 'vendor/ember-data/ember-data.prod.js'

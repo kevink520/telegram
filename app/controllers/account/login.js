@@ -7,6 +7,8 @@ var LoginController = Ember.ObjectController.extend({
     logIn: function() {
       var username = this.get('username');
       var password = this.get('password');
+
+      this.set('password', '');
       
       if (!username || !password) {
         return false;
@@ -15,6 +17,9 @@ var LoginController = Ember.ObjectController.extend({
       if (!username.trim() || !password.trim()) {
         return;
       }
+
+      var salt = username.trim() + 'telegramApp2014';
+      var md5 = Ember.$.md5(salt + password);
       
       var controller = this;
 
@@ -28,11 +33,10 @@ var LoginController = Ember.ObjectController.extend({
       };
 
       retry(function() {
-        return controller.store.find('user', { username: username, password: password }).then(function(users) {
+        return controller.store.find('user', { username: username, password: md5 }).then(function(users) {
           if (users) {
             controller.get('session').set('user', users.get('firstObject'));
             controller.set('username', '');
-            controller.set('password', '');
             console.log(users.get('firstObject'));
           
             controller.transitionToRoute('dashboard');

@@ -5,7 +5,7 @@
   {{/if}}
     <h1>{{#link-to "dashboard"}}<img src="/assets/images/telegram-logo-2.png" alt="Telegram">{{/link-to}}</h1>
   {{#if session.user}}
-    <div class="user-menu">{{#link-to "profile" session.user class="user"}}<img {{bind-attr src=session.user.photo alt=session.user.name}}>{{session.user.name}}<span class="caret"></span>{{/link-to}}<ul class="dropdown"><li><a href="#" {{action "logout"}}>Log Out</a></li></ul></div>
+    <div class="user-menu">{{#link-to "profile" session.user.username class="user"}}<img {{bind-attr src=session.user.photo alt=session.user.name}}>{{session.user.name}}<span class="caret"></span>{{/link-to}}<ul class="dropdown"><li><a href="#" {{action "logout"}}>Log Out</a></li></ul></div>
   {{/if}}
   </div>
 </header>

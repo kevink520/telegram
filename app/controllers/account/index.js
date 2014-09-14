@@ -10,6 +10,8 @@ var IndexController = Ember.ObjectController.extend({
       var username = this.get('username');
       var password = this.get('password');
 
+      this.set('password', '');
+
       if (!name || !username || !password) {
         return false;
       }
@@ -18,10 +20,13 @@ var IndexController = Ember.ObjectController.extend({
         return;
       }
 
+      var salt = username.trim() + 'telegramApp2014';
+      var md5 = Ember.$.md5(salt + password);
+
       var user = this.store.createRecord('user', {
         'username': username,
         'name': name,
-        'password': password,
+        'password': md5,
         'email': '',
         'photo': 'http://placehold.it/70'
       });
@@ -36,7 +41,6 @@ var IndexController = Ember.ObjectController.extend({
 
       this.set('name', '');
       this.set('username', '');
-      this.set('password', '');
       console.log(user);
       this.transitionToRoute('dashboard');         
     }
