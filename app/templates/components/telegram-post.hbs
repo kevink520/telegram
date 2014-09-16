@@ -1,4 +1,4 @@
-{{#link-to "profile" post.author}}<img {{bind-attr src=post.author.photo alt=post.author.name}}>{{/link-to}}
+{{#link-to "profile" post.author.username}}<img {{bind-attr src=post.author.photo alt=post.author.name}}>{{/link-to}}
 <div class="text">
   <h4 class="author">{{#link-to "profile" post.author.username}}{{post.author.name}}{{/link-to}}</h4>
   {{format-markdown body=post.body}}

@@ -1,6 +1,6 @@
 {{#each}}
 <article>
-  {{#link-to "profile" this}}<img {{bind-attr src=photo alt=name}}>{{/link-to}}
+  {{#link-to "profile" this.username}}<img {{bind-attr src=photo alt=name}}>{{/link-to}}
   <div class="text">
     <h4 class="author">{{#link-to "profile" this.username}}{{name}}{{/link-to}}</h4>
     
