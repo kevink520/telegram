@@ -23,12 +23,27 @@ var IndexController = Ember.ObjectController.extend({
       var salt = username.trim() + 'telegramApp2014';
       var md5 = Ember.$.md5(salt + password);
 
+      var avatars = {
+        1: '/assets/images/blue-avatar.png',
+        2: '/assets/images/green-avatar.png',
+        3: '/assets/images/orange-avatar.png',
+        4: '/assets/images/red-avatar.png',
+        5: '/assets/images/yellow-avatar.png'
+      };
+
+      function chooseRandomAvatar(avatars) {
+        function getRandomInt(min, max) {
+          return Math.floor(Math.random() * (max - min)) + min;
+        }
+        return avatars[getRandomInt(1, 6)];
+      }
+
       var user = this.store.createRecord('user', {
         'username': username,
         'name': name,
         'password': md5,
         'email': '',
-        'photo': 'http://placehold.it/70'
+        'photo': chooseRandomAvatar(avatars)
       });
       
       this.get('session').set('user', user);
