@@ -7,7 +7,8 @@ var User = DS.Model.extend({
   name: attr('string'),
   password: attr('string'),
   email: attr('string'),
-  photo: attr('string')
+  photo: attr('string'),
+  followedByCurrentUser: attr('boolean')
 });
 
 export default User;

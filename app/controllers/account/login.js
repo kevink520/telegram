@@ -37,7 +37,6 @@ var LoginController = Ember.ObjectController.extend({
           if (users) {
             controller.get('session').set('user', users.get('firstObject'));
             controller.set('username', '');
-            console.log(users.get('firstObject'));
           
             controller.transitionToRoute('dashboard');
           }  

@@ -5,12 +5,6 @@ var ProfileRoute = Ember.Route.extend({
     return this.store.find('user', { username: params.username });
   },
 
-  serialize: function(model) {
-    return {
-      username: model.get('username')
-    };
-  },
-
   setupController: function(controller, model) {
     controller.set('model', model.get('firstObject'));
   }

@@ -43,7 +43,8 @@ var IndexController = Ember.ObjectController.extend({
         'name': name,
         'password': md5,
         'email': '',
-        'photo': chooseRandomAvatar(avatars)
+        'photo': chooseRandomAvatar(avatars),
+        'followedByCurrentUser': false
       });
       
       this.get('session').set('user', user);
