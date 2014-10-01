@@ -2,7 +2,7 @@ import Ember from "ember";
 
 var ProfileFollowersRoute = Ember.Route.extend({
   model: function() {
-    var profileUser = this.controllerFor('profile').get('id');
+    var profileUser = this.modelFor('profile').get('firstObject').get('id');
     return this.store.find('user', {
       follows: profileUser
     });

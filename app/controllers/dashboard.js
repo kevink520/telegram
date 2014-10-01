@@ -28,7 +28,7 @@ var DashboardController = Ember.ArrayController.extend({
   actions: {
 
     publish: function() {
-      var user = this.get('session.user');
+      var user = this.get('session').get('user');
       var newPostBody = this.get('newPostBody'); 
       
       if (!newPostBody) {
