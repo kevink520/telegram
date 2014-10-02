@@ -46,16 +46,20 @@ var DashboardController = Ember.ArrayController.extend({
 
       var post = this.store.createRecord('post', {
         author: user,
+        repostedBy: null,
         body: newPostBody,
         createdDate: new Date().toISOString()
       });
-
-      console.log(post);
       
-      post.save();
-      this.set('newPostBody', '');
-    }
+      var controller = this;
 
+      post.save().then(function success() {
+        controller.set('newPostBody', '');
+        console.log('Successfully saved post record.');
+      }, function failure() {
+        console.log('Failed to save post record.');
+      });     
+    }
   },
   
   sortProperties: ['createdDate'],

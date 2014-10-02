@@ -50,13 +50,11 @@ var IndexController = Ember.ObjectController.extend({
       this.get('session').set('user', user);
       var controller = this;
 
-      user.save().then(function() {
-        console.log('Saved user record.');
+      user.save().then(function success() {
         controller.set('name', '');
         controller.set('username', '');
-        console.log(user);
         controller.transitionToRoute('dashboard');
-      }, function() {
+      }, function failure() {
         console.log('Failed to save user record');
       });     
                

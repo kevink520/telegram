@@ -1,9 +1,10 @@
 {{#each}}
 <article>
-  {{#link-to "profile" username}}<img {{bind-attr src=photo alt=name}}>{{/link-to}}
-  <div class="text">
-    <h4 class="author">{{#link-to "profile" username}}{{name}}{{/link-to}}</h4>
-    
+  <div class="table">
+    {{#link-to "profile" username}}<img {{bind-attr src=photo alt=name}}>{{/link-to}}
+    <div class="text">
+      <h4 class="author">{{#link-to "profile" username}}{{name}}{{/link-to}}</h4>   
+    </div>
   </div>
 </article>
 {{/each}}

@@ -656,16 +656,26 @@ header .content .user .caret {
   text-align: center;
 }
 article {
-  display: table;
   width: 100%;
-  padding: 17px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-article > * {
-  display: table-cell;
+.reposter {
+  margin: 17px 20px -3px 90px;
+  position: relative;
 }
-article > a {
-  width: 70px;
+.reposter img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: -40px;
+}
+.table {
+  display: table;
+  padding: 17px 20px;
+  text-align: left;
+}
+.table > * {
+  display: table-cell;
 }
 article img {
   width: 50px;
@@ -697,8 +707,17 @@ article a:hover {
 article .misc {
   margin-bottom: 0;
 }
+article .reposted,
 article .formatted-date {
   color: #888888;
+}
+.confirm-repost-request,
+.repost-success {
+  background: #eee;
+  width: 100%;
+}
+.repost-success .first-col {
+  width: 70px;
 }
 .user-info {
   margin: 0 auto;

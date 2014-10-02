@@ -176,18 +176,30 @@ header .content .user .caret {
 }
 
 article {
-  display: table;
   width: 100%;
-  padding: 17px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-article > * {
-  display: table-cell;
+.reposter {
+  margin: 17px 20px -3px 90px;
+  position: relative;
 }
 
-article > a {
-  width: 70px;
+.reposter img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: -40px;
+}
+
+.table {
+  display: table;
+  padding: 17px 20px;
+  text-align: left;
+}
+
+.table > * {
+  display: table-cell;
 }
 
 article img {
@@ -227,6 +239,15 @@ article .misc {
   margin-bottom: 0;
 }
 
-article .formatted-date {
+article .reposted, article .formatted-date {
   color: @light-gray;
+}
+
+.confirm-repost-request, .repost-success {
+  background: #eee;
+  width: 100%;
+}
+
+.repost-success .first-col {
+  width: 70px;
 }

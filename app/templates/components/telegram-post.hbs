@@ -1,6 +1,33 @@
-{{#link-to "profile" post.author.username}}<img {{bind-attr src=post.author.photo alt=post.author.name}}>{{/link-to}}
-<div class="text">
-  <h4 class="author">{{#link-to "profile" post.author.username}}{{post.author.name}}{{/link-to}}</h4>
-  {{format-markdown body=post.body}}
-  <p class="misc">{{format-date date=post.createdDate}}{{#if myPost}} &#183; <a class="delete" href="#" {{action "delete" post}}>Delete</a>{{/if}}</p>
+{{#if post.repostedBy}}
+  <p class="reposter"><img src="/assets/images/icon-retweet.png" alt="Repost Icon">Reposted by {{post.repostedBy.name}}</p>
+{{/if}}
+<div class="table">
+  {{#link-to "profile" post.author.username}}<img {{bind-attr src=post.author.photo alt=post.author.name}}>{{/link-to}}
+  <div class="text">
+    <h4 class="author">{{#link-to "profile" post.author.username}}{{post.author.name}}{{/link-to}}</h4>
+    {{format-markdown body=post.body}}
+    <p class="misc">{{format-date date=post.createdDate}}{{#if myRepost}} &#183; <span class="reposted">Reposted</span>{{/if}}{{#if myPostOrRepost}}{{else}} &#183; <a class="repost" href="#" {{action "requestRepost"}}>Repost</a>{{/if}}{{#if myPostOrRepost}} &#183; <a class="delete" href="#" {{action "delete" post}}>Delete</a>{{/if}}</p>
+  </div>
 </div>
+{{#if repostRequested}}
+  <div class="confirm-repost-request">
+    <div class="table">
+      <img class="repost-icon" src="/assets/images/icon-retweet.png" alt="Repost Icon">
+      <div class="text">
+        <p class="body">Repost this to your followers?</p>
+        <p class="repost-prompt-answers"><a href="#" {{action "repost" post}}>Yes</a> &#183; <a href="#" {{action "cancelRepostRequest"}}>No</a></p>
+      </div>
+    </div>
+  </div>
+{{/if}}
+{{#if repostSucceeded}}
+  <div class="repost-success">
+    <div class="table">
+      <div class="first-col"></div>
+      <div class="text">
+        <p class="body">Successfully reposted.</p>
+        <p>You can view your repost on {{#link-to "profile" session.user.username}}your profile page{{/link-to}}.</p>
+      </div>
+    </div>
+  </div>
+{{/if}}
