@@ -26,7 +26,9 @@ var ResetController = Ember.ObjectController.extend({
       };
 
       retry(function() {
-        return controller.store.find('user', { email: email }).then(function(users) {
+        return controller.store.find('user', { 
+          email: email 
+        }).then(function(users) {
           if (users.get('firstObject')) {
             controller.set('email', '');
             controller.transitionToRoute('account.reset_success');

@@ -4,10 +4,12 @@
     <img {{bind-attr src=photo alt=name}}>
     <h2 class="name">{{name}}</h2>
     <h4 class="username">@{{username}}</h4>
-    {{#if followedByCurrentUser}}
-      <button {{action "unfollow"}} class="blue-btn">Unfollow</button>
-    {{else}}
-      <button {{action "follow"}} class="blue-btn">Follow</button>
+    {{#if notMyProfile}}
+      {{#if followedByCurrentUser}}
+        <button {{action "unfollow"}} class="blue-btn">Unfollow</button>
+      {{else}}
+        <button {{action "follow"}} class="blue-btn">Follow</button>
+      {{/if}}
     {{/if}}
   </div>
   <hr>

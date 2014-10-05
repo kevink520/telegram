@@ -3,17 +3,9 @@ import Ember from "ember";
 var TelegramPostComponent = Ember.Component.extend({
   tagName: 'article',
   
-  myPost: function() {
+  myPostOrRepost: function() {
     return this.get('post.author.id') === this.get('session.user.id');
   }.property('post.author.id', 'session.user.id'),
-
-  myRepost: function() {
-    return this.get('post.repostedBy.id') === this.get('session.user.id');
-  }.property('post.repostedBy.id', 'session.user.id'),
-
-  myPostOrRepost: function() {
-    return this.get('myPost') || this.get('myRepost');
-  }.property('myPost', 'myRepost'),
 
   repostRequested: false,
 
@@ -31,9 +23,12 @@ var TelegramPostComponent = Ember.Component.extend({
     repost: function(post) {
       var store = this.get('targetObject').get('store');
       var currentUser = this.get('session').get('user');
+      var originalAuthor = !post.get('repostedFrom')
+        ? post.get('author')
+        : post.get('repostedFrom');
       var repost = store.createRecord('post', {
-        author: post.get('author'),
-        repostedBy: currentUser,
+        author: currentUser,
+        repostedFrom: originalAuthor,
         body: post.get('body'),
         createdDate: new Date().toISOString()
       });

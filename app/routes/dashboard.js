@@ -8,10 +8,15 @@ var DashboardRoute = Ember.Route.extend({
   },
   
   model: function() {
-    var route = this;
     return this.store.find('post', {
-      ownedByFolloweesOf: route.get('session').get('user').get('username')
+      ownedByCurrentUserAndFollowees: true
     });
+  },
+
+  actions: {
+    refreshRoute: function() {
+      this.refresh();
+    }
   }
 });
 

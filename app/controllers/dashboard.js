@@ -8,11 +8,15 @@ var DashboardController = Ember.ArrayController.extend({
   }.property('newPostBody.length'),
   
   warning: function() {
-    return this.get('characterCount') < 0 ? true : false;
+    return this.get('characterCount') < 0 
+      ? true 
+      : false;
   }.property('characterCount'),
   
   inflection: function() {
-    return Math.abs(this.get('characterCount')) === 1 ? '' : 's';
+    return Math.abs(this.get('characterCount')) === 1 
+      ? '' 
+      : 's';
   }.property('characterCount'),
   
   errorMessage: function(key, value) {		
@@ -40,13 +44,14 @@ var DashboardController = Ember.ArrayController.extend({
       }
       
       if (this.get('warning')) {
-        this.set('errorMessage', 'Oops! Your post was over the 140 characters limit. Try making your post shorter and publishing it again.');
+        this.set('errorMessage', 'Oops! Your post was over the 140 characters ' 
+          + 'limit. Try making your post shorter and publishing it again.');
         return;
       }
 
       var post = this.store.createRecord('post', {
         author: user,
-        repostedBy: null,
+        repostedFrom: null,
         body: newPostBody,
         createdDate: new Date().toISOString()
       });
@@ -55,7 +60,7 @@ var DashboardController = Ember.ArrayController.extend({
 
       post.save().then(function success() {
         controller.set('newPostBody', '');
-        console.log('Successfully saved post record.');
+        controller.get('target').send('refreshRoute');
       }, function failure() {
         console.log('Failed to save post record.');
       });     
@@ -66,7 +71,9 @@ var DashboardController = Ember.ArrayController.extend({
   sortAscending: false,
   
   limitedContent: function() {
-    return this.get('arrangedContent.length') > 7 ? this.get('arrangedContent').slice(0, 7) : this.get('arrangedContent');
+    return this.get('arrangedContent.length') > 7 
+      ? this.get('arrangedContent').slice(0, 7) 
+      : this.get('arrangedContent');
   }.property('arrangedContent.@each')
 });
 

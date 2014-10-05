@@ -4,7 +4,7 @@ var attr = DS.attr;
 
 var Post = DS.Model.extend({
   author: DS.belongsTo('user'),
-  repostedBy: DS.belongsTo('user'),
+  repostedFrom: DS.belongsTo('user'),
   body: attr('string'),
   createdDate: attr('string')
 });
