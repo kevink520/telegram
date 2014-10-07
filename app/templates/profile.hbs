@@ -4,7 +4,7 @@
     <img {{bind-attr src=photo alt=name}}>
     <h2 class="name">{{name}}</h2>
     <h4 class="username">@{{username}}</h4>
-    {{#if notMyProfile}}
+    {{#if showFollowUnfollowButton}}
       {{#if followedByCurrentUser}}
         <button {{action "unfollow"}} class="blue-btn">Unfollow</button>
       {{else}}

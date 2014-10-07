@@ -1,8 +1,12 @@
 import Ember from 'ember';
 
 var ProfileController = Ember.ObjectController.extend({
-  notMyProfile: function() {
-    return this.get('id') !== this.get('session').get('user').get('id');
+  showFollowUnfollowButton: function() {
+    if (this.get('session').get('user')) {
+      return this.get('id') !== this.get('session').get('user').get('id');
+    } else {
+      return false;
+    }   
   }.property('id', 'session.user.id'),
 
   actions: {
