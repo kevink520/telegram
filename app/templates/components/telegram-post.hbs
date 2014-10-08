@@ -14,7 +14,7 @@
       <h4 class="author">{{#link-to "profile" post.author.username}}{{post.author.name}}{{/link-to}}</h4>
     {{/if}}
     {{format-markdown body=post.body}}
-    <p class="misc">{{format-date date=post.createdDate}}{{#if myRepost}} &#183; <span class="reposted">Reposted</span>{{/if}}{{#if myPostOrRepost}}{{else}} &#183; <a class="repost" href="#" {{action "requestRepost"}}>Repost</a>{{/if}}{{#if myPostOrRepost}} &#183; <a class="delete" href="#" {{action "delete" post}}>Delete</a>{{/if}}</p>
+    <p class="misc">{{format-date date=post.createdDate}}{{#if showRepostedText}} &#183; <span class="reposted">Reposted</span>{{/if}}{{#if canRepost}} &#183; <a class="repost" href="#" {{action "requestRepost"}}>Repost</a>{{/if}}{{#if myPostOrRepost}} &#183; <a class="delete" href="#" {{action "delete" post}}>Delete</a>{{/if}}</p>
   </div>
 </div>
 {{#if repostRequested}}
