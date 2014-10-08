@@ -24,10 +24,6 @@ var DashboardController = Ember.ArrayController.extend({
       return value;
     }
   }.property('characterCount'),
-
-  /*index: function() {
-    return (+(this.get('content').sortBy('id').get('lastObject').get('id')) + 1).toString();
-  }.property('content.@each'),*/
   
   actions: {
 
@@ -64,17 +60,6 @@ var DashboardController = Ember.ArrayController.extend({
       }, function failure() {
         console.log('Failed to save post record.');
       });     
-
-      /*post.get('author').then(function getAuthorSuccess() {
-        post.save().then(function saveSuccess() {
-          controller.set('newPostBody', '');
-          controller.get('target').send('refreshRoute');
-        }, function saveFailure() {
-          console.log('Failed to save post record.');
-        });     
-      }, function getAuthorFailure() {
-        console.log('Failed to get the author record.');
-      });*/
     }
   },
   
