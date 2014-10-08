@@ -23,7 +23,24 @@ var TelegramPostComponent = Ember.Component.extend({
     repost: function(post) {
       var store = this.get('targetObject').get('store');
       var currentUser = this.get('session').get('user');
+      var originalAuthor = !post.get('repostedFrom')
+        ? post.get('author')
+        : post.get('repostedFrom');
+      var repost = store.createRecord('post', {
+        author: currentUser,
+        repostedFrom: originalAuthor,
+        body: post.get('body'),
+        createdDate: new Date().toISOString()
+      });
+      
       var component = this;
+      repost.save().then(function success() {
+        component.set('repostRequested', false);
+        component.set('repostSucceeded', true);
+      }, function failure() {
+        console.log('Failed to save post record.');
+      });
+      /*var component = this;
       var originalAuthor;
       post.get('author').then(function(author) {
         if (!post.get('repostedFrom')) {
@@ -86,11 +103,25 @@ var TelegramPostComponent = Ember.Component.extend({
         
       }, function() {
         console.log('Failed to get author user object of original post');
-      }); 
+      });*/ 
     },
 
     delete: function(post) { 
-      post.get('author').then(function getAuthorSuccess() {
+      var retry = function(callback, nTimes) {
+        return callback().catch(function(reason) {
+          if (nTimes-- > 0) {
+            return retry(callback, nTimes);
+          }
+          throw reason;
+        });
+      };
+
+      retry(function() {
+        return post.destroyRecord().then(function() {
+          console.log('Deleted the post from the records.');
+        });
+      }, 5);
+      /*post.get('author').then(function getAuthorSuccess() {
         if (!post.get('repostedFrom')) {
           post.destroyRecord().then(function destroySuccess() {
             console.log('Deleted the post from the records.');
@@ -111,7 +142,7 @@ var TelegramPostComponent = Ember.Component.extend({
         
       }, function getAuthorFailure() {
         console.log('Failed to get author user record.');
-      });
+      });*/
     }
   }
 });

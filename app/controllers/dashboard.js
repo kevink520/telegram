@@ -58,7 +58,14 @@ var DashboardController = Ember.ArrayController.extend({
       
       var controller = this;
 
-      post.get('author').then(function getAuthorSuccess() {
+      post.save().then(function success() {
+        controller.set('newPostBody', '');
+        controller.get('target').send('refreshRoute');
+      }, function failure() {
+        console.log('Failed to save post record.');
+      });     
+
+      /*post.get('author').then(function getAuthorSuccess() {
         post.save().then(function saveSuccess() {
           controller.set('newPostBody', '');
           controller.get('target').send('refreshRoute');
@@ -67,7 +74,7 @@ var DashboardController = Ember.ArrayController.extend({
         });     
       }, function getAuthorFailure() {
         console.log('Failed to get the author record.');
-      });
+      });*/
     }
   },
   
