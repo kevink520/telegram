@@ -23,43 +23,97 @@ var TelegramPostComponent = Ember.Component.extend({
     repost: function(post) {
       var store = this.get('targetObject').get('store');
       var currentUser = this.get('session').get('user');
-      var originalAuthor = !post.get('repostedFrom')
-        ? post.get('author')
-        : post.get('repostedFrom');
-      var repost = store.createRecord('post', {
-        author: currentUser,
-        repostedFrom: originalAuthor,
-        body: post.get('body'),
-        createdDate: new Date().toISOString()
-      });
-      
       var component = this;
-      repost.save().then(function success() {
-        component.set('repostRequested', false);
-        component.set('repostSucceeded', true);
-      }, function failure() {
-        console.log('Failed to save post record.');
-      });
+      var originalAuthor;
+      post.get('author').then(function(author) {
+        if (!post.get('repostedFrom')) {
+          originalAuthor = author;
+          var repost = store.createRecord('post', {
+            author: currentUser,
+            repostedFrom: originalAuthor,
+            body: post.get('body'),
+            createdDate: new Date().toISOString()
+          });
+
+          repost.get('author').then(function getAuthorSuccess() {
+            repost.get('repostedFrom').then(function getRepostedFromSuccess() {
+              repost.save().then(function saveSuccess() {
+                component.set('repostRequested', false);
+                component.set('repostSucceeded', true);
+              }, function failure() {
+                console.log('Failed to save post record.');
+              });
+            }, function getRepostedFromFailure() {
+              console.log('Failed to get RepostedFrom user record.');
+            });
+          }, function getAuthorFailure() {
+            console.log('Failed to get author user record.');
+          });
+
+        } else {
+          post.get('repostedFrom').then(function(repostedFrom) {
+            if (repostedFrom) {
+              originalAuthor = repostedFrom;
+            }
+
+            var repost = store.createRecord('post', {
+              author: currentUser,
+              repostedFrom: originalAuthor,
+              body: post.get('body'),
+              createdDate: new Date().toISOString()
+            });
+
+            repost.get('author').then(function getAuthorSuccess() {
+              repost.get('repostedFrom').then(function getRepostedFromSuccess() {
+                repost.save().then(function saveSuccess() {
+                  component.set('repostRequested', false);
+                  component.set('repostSucceeded', true);
+                }, function failure() {
+                  console.log('Failed to save post record.');
+                });
+              }, function getRepostedFromFailure() {
+                console.log('Failed to get RepostedFrom user record.');
+              });
+            }, function getAuthorFailure() {
+              console.log('Failed to get author user record.');
+            });
+
+          }, function() {
+            console.log('Failed to get repostedFrom user object of original post');
+          });
+        }
+        
+        
+      }, function() {
+        console.log('Failed to get author user object of original post');
+      }); 
     },
 
     delete: function(post) { 
-      var retry = function(callback, nTimes) {
-        return callback().catch(function(reason) {
-          if (nTimes-- > 0) {
-            return retry(callback, nTimes);
-          }
-          throw reason;
-        });
-      };
-
-      retry(function() {
-        return post.destroyRecord().then(function() {
-          console.log('Deleted the post from the records.');
-        });
-      }, 5);
+      post.get('author').then(function getAuthorSuccess() {
+        if (!post.get('repostedFrom')) {
+          post.destroyRecord().then(function destroySuccess() {
+            console.log('Deleted the post from the records.');
+          }, function destroyFailure() {
+            console.log('Failed to delete the post.');
+          });
+        } else {
+          post.get('repostedFrom').then(function getRepostedFromSuccess() {
+            post.destroyRecord().then(function destroySuccess() {
+              console.log('Deleted the post from the records.');
+            }, function destroyFailure() {
+              console.log('Failed to delete the post.');
+            });
+          }, function getRepostedFromFailure() {
+            console.log('Failed to get RepostedFrom user record.');
+          });
+        }
+        
+      }, function getAuthorFailure() {
+        console.log('Failed to get author user record.');
+      });
     }
   }
-
 });
 
 export default TelegramPostComponent;

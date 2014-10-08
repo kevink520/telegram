@@ -5,7 +5,9 @@ var ProfileIndexController = Ember.ArrayController.extend({
   sortAscending: false,
   
   limitedContent: function() {
-    return this.get('arrangedContent.length') > 7 ? this.get('arrangedContent').slice(0, 7) : this.get('arrangedContent');
+    return this.get('arrangedContent.length') > 7 
+      ? this.get('arrangedContent').slice(0, 7) 
+      : this.get('arrangedContent');
   }.property('arrangedContent.@each')
 
 });

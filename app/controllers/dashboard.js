@@ -44,8 +44,8 @@ var DashboardController = Ember.ArrayController.extend({
       }
       
       if (this.get('warning')) {
-        this.set('errorMessage', 'Oops! Your post was over the 140 characters ' 
-          + 'limit. Try making your post shorter and publishing it again.');
+        this.set('errorMessage', 'Oops! Your post was over the 140 characters ' +
+                 'limit. Try making your post shorter and publishing it again.');
         return;
       }
 
@@ -58,12 +58,16 @@ var DashboardController = Ember.ArrayController.extend({
       
       var controller = this;
 
-      post.save().then(function success() {
-        controller.set('newPostBody', '');
-        controller.get('target').send('refreshRoute');
-      }, function failure() {
-        console.log('Failed to save post record.');
-      });     
+      post.get('author').then(function getAuthorSuccess() {
+        post.save().then(function saveSuccess() {
+          controller.set('newPostBody', '');
+          controller.get('target').send('refreshRoute');
+        }, function saveFailure() {
+          console.log('Failed to save post record.');
+        });     
+      }, function getAuthorFailure() {
+        console.log('Failed to get the author record.');
+      });
     }
   },
   
