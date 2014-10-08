@@ -2,6 +2,10 @@ import Ember from "ember";
 
 var TelegramPostComponent = Ember.Component.extend({
   tagName: 'article',
+
+  repostedFrom: function() {
+    return this.get('post.repostedFrom');
+  }.property('post.repostedFrom'),
   
   myPostOrRepost: function() {
     return this.get('post.author.id') === this.get('session.user.id');
