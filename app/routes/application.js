@@ -19,7 +19,7 @@ var ApplicationRoute = Ember.Route.extend({
     },
     logout: function() {
       var route = this;
-      Ember.$.get('/api/logout', function(data) {
+      Ember.$.get('/api/users/logout', function(data) {
         console.log(data);
         route.transitionTo('account.index');
       });
